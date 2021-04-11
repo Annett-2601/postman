@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "dbd52ae5-1562-4eba-aa89-7681e433f800",
+		"name": "task2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token task2\", jsonData.token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "dad",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url task 2}}/login",
+					"host": [
+						"{{url task 2}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"//status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//check  coefficient\r",
+							"pm.test(\"CHECK\", function() {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    let SixCoef=2;\r",
+							"    let TwelveCoef=2.9;\r",
+							"    let eightCoef=4;\r",
+							"    pm.expect(jsonData.qa_salary_after_6_months).to.eq(jsonData. start_qa_salary*SixCoef);\r",
+							"    pm.expect(jsonData.qa_salary_after_12_months).to.eq(jsonData. start_qa_salary*TwelveCoef);\r",
+							"    pm.expect(jsonData.person.u_salary_1_5_year).to.eq(jsonData. start_qa_salary*eightCoef);\r",
+							"})\r",
+							"\r",
+							"// checking json structure in response \r",
+							"\r",
+							"pm. test (\"Schema\" , function  () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"object\");\r",
+							"    pm.expect(jsonData.start_qa_salary).to.be.an (\"number\");\r",
+							"    pm.expect(jsonData.qa_salary_after_6_months).to.be.an (\"number\");\r",
+							"    pm.expect(jsonData.qa_salary_after_12_months).to.be.an(\"number\");\r",
+							"    pm.expect (jsonData.person).to.be.a (\"object\");\r",
+							"    pm.expect(jsonData.person.u_name).to.be.an (\"array\");\r",
+							"    pm.expect (jsonData.person.u_name [0]).to.be.an (\"string\");\r",
+							"    pm.expect (jsonData.person.u_name [1]).to.be.an (\"number\");\r",
+							"    pm.expect (jsonData.person.u_name [2]).to.be.an (\"number\");\r",
+							"    pm.expect (jsonData.person.u_age).to.be.an (\"number\");\r",
+							"    pm.expect (jsonData.person.u_salary_1_5_year) .to.be.an (\"number\");\r",
+							"})\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token task2}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url task 2}}/user_info",
+					"host": [
+						"{{url task 2}}"
+					],
+					"path": [
+						"user_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"//status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"   \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token task2}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url task 2}}/new_data",
+					"host": [
+						"{{url task 2}}"
+					],
+					"path": [
+						"new_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_pet_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "53",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token task2}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url task 2}}/test_pet_info",
+					"host": [
+						"{{url task 2}}"
+					],
+					"path": [
+						"test_pet_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_test_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Hanna",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token task2}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url task 2}}/get_test_user",
+					"host": [
+						"{{url task 2}}"
+					],
+					"path": [
+						"get_test_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "currency",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token task2}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://116.203.27.46:5002/currency?=",
+					"protocol": "http",
+					"host": [
+						"116",
+						"203",
+						"27",
+						"46"
+					],
+					"port": "5002",
+					"path": [
+						"currency"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "curr_byn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token task2}}",
+							"type": "text"
+						},
+						{
+							"key": "curr_code",
+							"value": "145",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url task 2}}/curr_byn",
+					"host": [
+						"{{url task 2}}"
+					],
+					"path": [
+						"curr_byn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
